@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { pokemonApi } from '../api/pokeminApi';
 import {
   PokemonPaginatedResponse,
@@ -6,22 +6,20 @@ import {
 } from '../interfaces/pokemonInterface';
 import { mapPokemonList } from '../utils/maps';
 
-export const usePokemonPaginated = () => {
+export const usePokemonSearch = () => {
   const [simplePokemonList, setSimplePokemonList] = useState<SimplePokemon[]>(
     [],
   );
   const [isLoading, setIsLoading] = useState(true);
-  const nextPage = useRef('https://pokeapi.co/api/v2/pokemon?limit=40');
 
   const loadPokemons = useCallback(async () => {
     setIsLoading(true);
     const resp = await pokemonApi.get<PokemonPaginatedResponse>(
-      nextPage.current,
+      'https://pokeapi.co/api/v2/pokemon?limit=1200',
     );
 
-    nextPage.current = resp.data.next;
     const pokemons = mapPokemonList(resp.data.results);
-    setSimplePokemonList(prev => [...prev, ...pokemons]);
+    setSimplePokemonList(pokemons);
     setIsLoading(false);
   }, []);
 

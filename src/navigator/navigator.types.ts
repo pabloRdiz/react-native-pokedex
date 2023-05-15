@@ -3,6 +3,7 @@ import { SimplePokemon } from '../interfaces/pokemonInterface';
 export enum NavigatorScreens {
   HOME_SCREEN = 'HomeScreen',
   POKEMON_SCREEN = 'PokemonScreen',
+  SEARCH_SCREEN = 'SearchScreen',
 }
 
 export type RouteStackParams = {
@@ -11,4 +12,5 @@ export type RouteStackParams = {
     simplePokemon: SimplePokemon;
     color: string;
   };
+  [NavigatorScreens.SEARCH_SCREEN]: undefined;
 };

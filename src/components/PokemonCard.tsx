@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import {
   Dimensions,
   Image,
@@ -10,7 +11,6 @@ import { useNavigation } from '@react-navigation/native';
 import ImageColors from 'react-native-image-colors';
 import { SimplePokemon } from '../interfaces/pokemonInterface';
 import { FadeInImage } from './FadeInImage';
-import { useEffect, useRef, useState } from 'react';
 import { NavigatorScreens } from '../navigator/navigator.types';
 
 const windowWidth = Dimensions.get('window').width;
